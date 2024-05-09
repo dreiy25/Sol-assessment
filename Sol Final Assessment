@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.25;
+
+// create a token
+contract MyToken {
+
+    // public variables
+    string public tokenName = "DREIY TOKEN";
+    string public tokenAbrv = "DTK";
+    uint public totalSupply = 0;
+
+    // mapping
+    mapping(address => uint) public balances;
+
+    // mint function
+    function mint (address address1, uint value) public {
+        totalSupply += value;
+        balances [address1] += value;
+    }
+    // burn function
+    function burn (address address1, uint value) public {
+        if (balances[address1] >= value){
+            totalSupply -= value;
+            balances [address1] -= value;
+        }
+    }
+}
